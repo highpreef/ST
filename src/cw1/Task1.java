@@ -10,8 +10,7 @@ public class Task1 {
 
 	@Test
 	public void testMatches() {
-		RegExpMatcher.matches("a", "a");
-		fail("Not yet implemented");
+		assertTrue(RegExpMatcher.matches("a", "[a|b]"));	//Bug 3 Found (easy)
 	}
 
 }
