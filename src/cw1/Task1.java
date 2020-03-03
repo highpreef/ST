@@ -100,5 +100,16 @@ public class Task1 {
 	public void testMatches3() {
 		//assertTrue(RegExpMatcher.matches("abcabc", "(abc)\\1"));		//Bug 4 Found (easy)
 	}
+	
+	//TODO try other combinations using curly braces
+	@Test
+	public void testMatches4() {
+		//assertTrue(RegExpMatcher.matches("aaaa", "a{i}"));		//Bug 7 Found (medium)
+	}
+	
+	@Test
+	public void testMatches5() {
+		//assertTrue(RegExpMatcher.matches("a", "a{i,}"));		//Bug 7 Found (medium)
+	}
 
 }
