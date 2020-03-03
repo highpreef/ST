@@ -8,5 +8,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="C:/Users/DAVID/Desktop/SOFTTEST/automaton.jar"/>
+	<classpathentry kind="lib" path="C:/Users/DAVID/Desktop/SOFTTEST/randoop-all-4.2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
