@@ -111,5 +111,40 @@ public class Task1 {
 	public void testMatches5() {
 		//assertTrue(RegExpMatcher.matches("a", "a{i,}"));		//Bug 7 Found (medium)
 	}
+	
+	@Test
+	public void testMatches6() {
+		//assertTrue(RegExpMatcher.matches("2", "<-1>"));		//Bug 9 Found (medium)
+	}
+	
+	@Test
+	public void testMatches7() {
+		//assertTrue(RegExpMatcher.matches("a", "[a--b]"));		//Bug 5 Found (hard)
+	}
+	
+	@Test
+	public void testMatches8() {
+		//assertTrue(RegExpMatcher.matches("a", "a**"));		//Bug 8 Found (medium)
+	}
+	
+	@Test
+	public void testMatches9() {
+		//assertTrue(RegExpMatcher.matches("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "a"));		//Bug 6 Found (hard)
+	}
+	
+	@Test
+	public void testMatches10() {
+		//assertTrue(RegExpMatcher.matches("a42a", "a*"));		//Bug 10 Found (hard)
+	}
+	
+	@Test
+	public void testMatches11() {
+		//assertTrue(RegExpMatcher.matches("abcdss42aasdf", "abc"));		//Bug 10 Found (hard)
+	}
+	
+	@Test
+	public void testMatches12() {
+		//assertTrue(RegExpMatcher.matches("zx", "[^a"));		//Bug 14 Found (medium)
+	}
 
 }
