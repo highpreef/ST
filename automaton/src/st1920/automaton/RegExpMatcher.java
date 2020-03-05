@@ -16,16 +16,4 @@ public class RegExpMatcher {
 		Automaton a = regExp.toAutomaton();
 		return a.run(m);
 	}
-
-	public static String makeAlpha() {
-		return "a";
-	}
-
-	public static String makeNum() {
-		return "1";
-	}
-
-	public static String makeConcatenation(String l, String r) {
-		return l + r;
-	}
 }
