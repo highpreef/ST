@@ -5,6 +5,7 @@ st1920\automaton\TransitionComparator.class
 st1920\automaton\StatePair.class
 st1920\automaton\RegExpMatcher.class
 st1920\automaton\RegExp.class
+st1920\automaton\REString.class
 st1920\automaton\State.class
 st1920\automaton\RegExp$Kind.class
 st1920\automaton\MinimizationOperations$StateList.class

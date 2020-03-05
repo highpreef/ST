@@ -5,13 +5,27 @@ package st1920.automaton;
  */
 public class RegExpMatcher {
 	/**
-	 * Tells whether the string <code>m</code> matches the regular expression <code>re</code>.
-	 * @param m string to be matched
+	 * Tells whether the string <code>m</code> matches the regular expression
+	 * <code>re</code>.
+	 * 
+	 * @param m  string to be matched
 	 * @param re regular expression
 	 */
 	public static boolean matches(String m, String re) {
 		RegExp regExp = new RegExp(re);
 		Automaton a = regExp.toAutomaton();
 		return a.run(m);
+	}
+
+	public static String makeAlpha() {
+		return "a";
+	}
+
+	public static String makeNum() {
+		return "1";
+	}
+
+	public static String makeConcatenation(String l, String r) {
+		return l + r;
 	}
 }
