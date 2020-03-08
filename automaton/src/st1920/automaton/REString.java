@@ -47,8 +47,20 @@ public class REString {
 		return new REString("[" + p.string + "]");
 	}
 	
+	public REString makeExcludeClass(REString p) {
+		return new REString("[^" + p.string + "]");
+	}
+	
 	public REString makeAnyChar(REString p) {
 		return new REString(p.string + ".");
+	}
+	
+	public REString makeNothing(REString p) {
+		return new REString(p.string + "#");
+	}
+	
+	public REString makeAny(REString p) {
+		return new REString(p.string + "@");
 	}
 
 }
