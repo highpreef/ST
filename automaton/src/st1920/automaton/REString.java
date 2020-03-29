@@ -62,5 +62,13 @@ public class REString {
 	public REString makeAny(REString p) {
 		return new REString(p.string + "@");
 	}
+	
+	public REString makeGroup(REString p) {
+		return new REString("(" + p.string + ")");
+	}
+	
+	public REString makeRep(REString p, int a, int b) {
+		return new REString(p.string + "<" + a + "-" + b + ">");
+	}
 
 }
