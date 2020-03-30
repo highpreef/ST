@@ -49,4 +49,54 @@ public class Task3_2 {
 		assertFalse(REGEXWrapper.matches("a", reString2));
 		
 	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void test07() {
+		REString reString2 = new REString("(?P<i d>aaa)a");
+		assertFalse(REGEXWrapper.matches("aaaa", reString2));
+		
+	}
+    
+	@Test(expected = IllegalArgumentException.class)
+	public void test08() {
+		REString reString2 = new REString("ab{0,}bc");
+		assertFalse(REGEXWrapper.matches("abbbbc", reString2));
+		
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void test09() {
+		REString reString2 = new REString("ab{1,3}bc");
+		assertFalse(REGEXWrapper.matches("abbbbc", reString2));
+		
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void test10() {
+		REString reString2 = new REString("ab{3,1}bc");
+		assertFalse(REGEXWrapper.matches("abbbbc", reString2));
+		
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void test11() {
+		REString reString2 = new REString("ab{0,1}bc");
+		assertFalse(REGEXWrapper.matches("abc", reString2));
+		
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void test12() {
+		REString reString2 = new REString("(a+|b)*");
+		assertFalse(REGEXWrapper.matches("ab", reString2));
+		
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void test13() {
+		REString reString2 = new REString("(?i)ab{0,}?bc");
+		assertFalse(REGEXWrapper.matches("ABBBBC", reString2));
+		
+	}
 }
