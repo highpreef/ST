@@ -10,9 +10,13 @@ public class REString {
 	public REString makeAlpha(REString p) {
 		return new REString(p.string + "a");
 	}
+
+	public REString makeAnd(REString p, REString q) {
+		return new REString(p.string + "&" + q.string);
+	}
 	
-	public REString makeBeta(REString p) {
-		return new REString(p.string + "b");
+	public REString makeOr(REString p, REString q) {
+		return new REString(p.string + "|" + q.string);
 	}
 	
 	public REString makeNum(REString p) {
@@ -35,8 +39,8 @@ public class REString {
 		return new REString(p.string + "+");
 	}
 	
-	public REString makeOccur1(REString p, int a) {
-		return new REString(p.string + "{" + a + "}");
+	public REString makeRange(REString p, int a, int b) {
+		return new REString(p.string + "{" + a + "," + b + "}");
 	}
 	
 	public REString makeExclude(REString p) {

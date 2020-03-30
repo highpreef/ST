@@ -621,7 +621,7 @@ public class RegExp {
 	private final RegExp parseSimpleExp() throws IllegalArgumentException {
 		if (match('.'))
 			return makeAnyChar();
-		else if (check(EMPTY) && match('#'))
+ 		else if (check(EMPTY) && match('#'))
 			return makeEmpty();
 		else if (check(ANYSTRING) && match('@'))
 			return makeAnyString();
