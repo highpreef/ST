@@ -124,4 +124,5 @@ public class Task3_2 {
 		REString reString2 = new REString("~b&<>");
 		assertFalse(REGEXWrapper.matches("b", reString2));
 	}
+	
 }
