@@ -1,0 +1,116 @@
+From 15978fae5a28833cb80f00d0ac3540ebe784e5a0 Mon Sep 17 00:00:00 2001
+From: highpreef <david.jorge@gmail.com>
+Date: Tue, 31 Mar 2020 18:00:13 +0100
+Subject: [PATCH] task3_1
+
+---
+ REGEXWrapper.java |  9 ++++++
+ REString.java     | 78 +++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 87 insertions(+)
+ create mode 100644 REGEXWrapper.java
+ create mode 100644 REString.java
+
+diff --git a/REGEXWrapper.java b/REGEXWrapper.java
+new file mode 100644
+index 0000000..6550c24
+--- /dev/null
++++ b/REGEXWrapper.java
+@@ -0,0 +1,9 @@
++package st1920.automaton;
++
++public class REGEXWrapper {
++	
++	public static boolean matches(String s, REString re) {
++		return RegExpMatcher.matches(s, re.string);
++	}
++	
++}
+\ No newline at end of file
+diff --git a/REString.java b/REString.java
+new file mode 100644
+index 0000000..8862845
+--- /dev/null
++++ b/REString.java
+@@ -0,0 +1,78 @@
++package st1920.automaton;
++
++public class REString {
++	public String string;
++	
++	public REString(String p) {
++		string = p;
++	}
++	
++	public REString makeAlpha(REString p) {
++		return new REString(p.string + "a");
++	}
++
++	public REString makeAnd(REString p, REString q) {
++		return new REString(p.string + "&" + q.string);
++	}
++	
++	public REString makeOr(REString p, REString q) {
++		return new REString(p.string + "|" + q.string);
++	}
++	
++	public REString makeNum(REString p) {
++		return new REString(p.string + "1");
++	}
++	
++	public REString makeConcatenation(REString p, REString r) {
++		return new REString(p.string + r.string);
++	}
++	
++	public REString makeZeroOrOne(REString p) {
++		return new REString(p.string + "?");
++	}
++	
++	public REString makeZeroOrMore(REString p) {
++		return new REString(p.string + "*");
++	}
++	
++	public REString makeOneOrMore(REString p) {
++		return new REString(p.string + "+");
++	}
++	
++	public REString makeRange(REString p, int a, int b) {
++		return new REString(p.string + "{" + a + "," + b + "}");
++	}
++	
++	public REString makeExclude(REString p) {
++		return new REString("~" + p.string);
++	}
++	
++	public REString makeClass(REString p) {
++		return new REString("[" + p.string + "]");
++	}
++	
++	public REString makeExcludeClass(REString p) {
++		return new REString("[^" + p.string + "]");
++	}
++	
++	public REString makeAnyChar(REString p) {
++		return new REString(p.string + ".");
++	}
++	
++	public REString makeNothing(REString p) {
++		return new REString(p.string + "#");
++	}
++	
++	public REString makeAny(REString p) {
++		return new REString(p.string + "@");
++	}
++	
++	public REString makeGroup(REString p) {
++		return new REString("(" + p.string + ")");
++	}
++	
++	public REString makeRep(REString p, int a, int b) {
++		return new REString(p.string + "<" + a + "-" + b + ">");
++	}
++
++}
+\ No newline at end of file
+-- 
+2.26.0.windows.1
+
