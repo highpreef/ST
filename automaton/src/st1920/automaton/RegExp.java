@@ -119,7 +119,7 @@ public class RegExp {
 		REGEXP_STRING,
 		REGEXP_ANYSTRING,
 		REGEXP_AUTOMATON,
-		REGEXP_INTERVAL
+		REGEXP_INTERVAL,
 	}
 	
 	/** 
@@ -457,6 +457,11 @@ public class RegExp {
 		r.kind = Kind.REGEXP_ANYCHAR;
 		return r;
 	}
+	
+	private static RegExp makeEndLine() {
+		RegExp r = new RegExp("\n|\r|(\r\n)");
+		return r;
+	}
 
 	private static RegExp makeEmpty() {
 		RegExp r = new RegExp();
@@ -621,6 +626,8 @@ public class RegExp {
 	private final RegExp parseSimpleExp() throws IllegalArgumentException {
 		if (match('.'))
 			return makeAnyChar();
+		else if (match('$'))
+			return makeEndLine();
  		else if (check(EMPTY) && match('#'))
 			return makeEmpty();
 		else if (check(ANYSTRING) && match('@'))

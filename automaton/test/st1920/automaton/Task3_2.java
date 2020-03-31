@@ -125,4 +125,9 @@ public class Task3_2 {
 		assertFalse(REGEXWrapper.matches("b", reString2));
 	}
 	
+	@Test
+	public void test19() {
+		REString reString2 = new REString("(a+$)+");
+		assertTrue(REGEXWrapper.matches("a\naaa\r\n", reString2));
+	}
 }
