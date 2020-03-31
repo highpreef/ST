@@ -1,4 +1,4 @@
-package cw1;
+package st1920.automaton;
 
 import static org.junit.Assert.*;
 

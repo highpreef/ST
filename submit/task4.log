@@ -1,0 +1,31 @@
+commit 40756ee3038eab3d0715275be8ae1367592c67c9
+Author: highpreef <david.jorge@gmail.com>
+Date:   Tue Mar 31 20:09:20 2020 +0100
+
+    As the desired functionality added worked as expected, additional test cases were created.
+
+M	test/st1920/automaton/Task4.java
+
+commit e2741d3c3b6b3c07e253e9fc4976460497665406
+Author: highpreef <david.jorge@gmail.com>
+Date:   Tue Mar 31 20:06:22 2020 +0100
+
+    Additional test cases were created to test the functionality of the additional code.
+
+M	test/st1920/automaton/Task4.java
+
+commit bc8ec1431a4ed61655dad0bbe4f9df67c811b91c
+Author: highpreef <david.jorge@gmail.com>
+Date:   Tue Mar 31 20:03:41 2020 +0100
+
+    We debugged the existing test cases and followed the trace to find out where to implement the end-of-line functionality, and then implemented it.
+
+M	src/st1920/automaton/RegExp.java
+
+commit 4128b2840d9cdd31cec7fd60841145a51c254664
+Author: highpreef <david.jorge@gmail.com>
+Date:   Tue Mar 31 19:58:56 2020 +0100
+
+    Tests 00 to 02 were created to understand the RegExp code in order to then make changes to it
+
+A	test/st1920/automaton/Task4.java
