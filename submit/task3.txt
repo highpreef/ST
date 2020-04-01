@@ -1,0 +1,10 @@
+Advantages:
+- We can use our wrapper classes to define different combinations of regular expressions that we want to test, allowing us to create a thorough test suite while only providing methods that create quite basic functionality before being passed to randoop.
+- We can specify the classes under test to generate relevant and useful tests
+- We do not need to explicitly call functions and methods that we have created, since randoop will generate tests which generate sequences of method invocations which thoroughly test the program through a varied input space
+- It was useful to use randoop to find some of the more difficult bugs in task 1 while doing black box testing
+- At the start of Task3.1 we thought of creating methods which would randomly create letters or digits, yet we were warned about the existance of flaky methods, and thus made us rethink how we generate letters and digits to exclude a random input space from testing.
+
+Disadvantages:
+- The coverage performance when using randoop tests sometimes decreased when adding more methods to our wrapper class, even though this should've increased the coverage in theory. Although we added methods that would cover all the regex rules, this performed worse than when some methods of rules were omitted. This is due to Randoop's way of choosing methods to use at random and thus, when adding more methods, it can choose some which could be less effective on their own. This however made us create better and more effective tests.
+- For this task, randoop was not able to generate test cases which covered all the regex combinations, even when methods to create certain patterns were made, those were not always used. Therefore, randoop's random nature in selecting methods can sometimes ignore certain methods which we would've liked to be tested. However, this was easily spotted when looking at branch coverage after running the tests.
