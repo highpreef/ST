@@ -1,13 +1,286 @@
 package cw1;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import st1920.automaton.REGEXWrapper;
+import st1920.automaton.REString;
+import st1920.automaton.RegExpMatcher;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class Task3_1 {
+public class Task3_all_old {
 
     public static boolean debug = false;
+    
+    /*
+     * TESTS FROM TASK 3.2
+     */
+    @Test(expected = IllegalArgumentException.class)
+	public void test01() {
+		REString reString = new REString("(string");
+		REGEXWrapper.matches("string", reString);
+
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void test02() {
+		REString reString = new REString("\"string\"");
+		assertTrue(REGEXWrapper.matches("string", reString));
+		REString reString1 = new REString("\"string");
+		REGEXWrapper.matches("string", reString1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void test03() {
+		REString reString = new REString("<");
+		assertFalse(REGEXWrapper.matches("3", reString));
+		REString reString2 = new REString("<2-7>");
+		assertTrue(REGEXWrapper.matches("5", reString2));
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void test04() {
+		REString reString = new REString("<>");
+		assertFalse(REGEXWrapper.matches("", reString));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void test05() {
+		REString reString = new REString("<2->");
+		assertFalse(REGEXWrapper.matches("string", reString));
+	}
+	
+	
+	@Test
+	public void test06() {
+		REString reString2 = new REString("[^~?]");
+		assertFalse(REGEXWrapper.matches("aaa", reString2));
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void test07() {
+		REString reString2 = new REString("(?P<i d>aaa)a");
+		assertFalse(REGEXWrapper.matches("aaaa", reString2));
+	}
+    
+	@Test
+	public void test08() {
+		REString reString2 = new REString("ab{0,}bc");
+		assertTrue(REGEXWrapper.matches("abbbbc", reString2));	
+	}
+	
+	@Test
+	public void test09() {
+		REString reString2 = new REString("ab{1,3}bc");
+		assertTrue(REGEXWrapper.matches("abbbbc", reString2));	
+	}
+	
+	@Test
+	public void test10() {
+		REString reString2 = new REString("ab{3,1}bc");
+		assertFalse(REGEXWrapper.matches("abbbbc", reString2));
+	}
+	
+	@Test
+	public void test11() {
+		REString reString2 = new REString("ab{0,1}bc");
+		assertTrue(REGEXWrapper.matches("abc", reString2));
+		
+	}
+	
+	@Test
+	public void test12() {
+		REString reString2 = new REString("(a+|b)*");
+		assertTrue(REGEXWrapper.matches("ab", reString2));
+	}
+	
+	@Test
+	public void test13() {
+		REString reString2 = new REString("(?i)ab{0,}?bc");
+		assertFalse(REGEXWrapper.matches("ABBBBC", reString2));
+	}
+	
+	@Test
+	public void test14() {
+		REString reString2 = new REString("^#?([a-f0-9]{6}|[a-f0-9]{3})$\n" + 
+				"");
+		assertFalse(REGEXWrapper.matches("ABBBBC", reString2));
+	}
+	
+	@Test
+	public void test15() {
+		REString reString2 = new REString("<0-0>");
+		assertFalse(REGEXWrapper.matches("[~..]<0-1>", reString2));
+	}
+	
+	@Test
+	public void test16() {
+		REString reString2 = new REString("/^[a-z0-9_-]{3,16}$/");
+		assertFalse(REGEXWrapper.matches("my-us3r_n4m3", reString2));
+	}
+	
+	@Test
+	public void test17() {
+		REString reString2 = new REString("/^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$/");
+		assertFalse(REGEXWrapper.matches("https://net.tutsplus.com/about", reString2));
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void test18() {
+		REString reString2 = new REString("~b&<>");
+		assertFalse(REGEXWrapper.matches("b", reString2));
+	}
+	
+	/*
+	 * TESTS FROM TASK 1
+	 */
+    @Test
+	public void testMatchesEMPTY1() {
+		assertFalse(RegExpMatcher.matches("", ""));	//Bug 1 Found (easy)
+	}
+	
+	@Test
+	public void testMatchesEMPTY2() {
+		assertFalse(RegExpMatcher.matches("a", ""));	//Bug 2 Found (easy)
+	}
+	
+	//TODO Add test cases for 0, 1 and more than 1 match
+	@Test
+	public void testMatchesOR1() {
+		assertTrue(RegExpMatcher.matches("a", "(a|b|c)"));	//Bug 3 Found (easy)
+	}
+	
+	@Test
+	public void testMatchesOR2() {
+		assertTrue(RegExpMatcher.matches("ab", "[a|b]"));	//Bug 3 Found (easy)
+	}
+	
+	//TODO Add test cases for 0, 1 and more than 1 match 
+	@Test
+	public void testMatchesAND() {
+		assertTrue(RegExpMatcher.matches("acb", "[a&b]"));	//Bug 3 Found (easy)
+	}
+	
+	//TODO Add test cases for different patterns
+	@Test
+	public void testMatchesFOLLOW1() {
+		assertTrue(RegExpMatcher.matches("vabc", "abc"));	//Bug 15 Found (medium)
+	}
+	
+	@Test
+	public void testMatchesZeroOrOne1() {
+		assertTrue(RegExpMatcher.matches("bca", "a?"));		//Bug 11 Found (easy)
+	}
+	
+	@Test
+	public void testMatchesZeroOrOne2() {
+		assertTrue(RegExpMatcher.matches("abc", "ab?c"));		//Bug 11 Found (easy)
+	}
+	
+	@Test
+	public void testMatchesZeroOrMore() {
+		assertTrue(RegExpMatcher.matches("abbbbc", "ab*bc"));		//Bug 15 Found (medium)
+	}
+	
+	@Test
+	public void testMatchesOneOrMore1() {
+		assertFalse(RegExpMatcher.matches("abbbbc", "ab+bc"));		//Bug 15 Found (medium)
+	}
+	
+	@Test
+	public void testMatchesOCCUR1() {
+		assertTrue(RegExpMatcher.matches("bcaaaa", "a{4}"));		//Bug 15 Found (medium)
+	}
+	
+	@Test
+	public void testMatchesOCCUR2() {
+		assertTrue(RegExpMatcher.matches("bcaaaaa", "a{4,}"));		//Bug 15 Found (medium)
+	}
+	
+	@Test
+	public void testMatchesOCCUR3() {
+		assertTrue(RegExpMatcher.matches("bcaaaaa", "a{4,6}"));		//Bug 15 Found (medium)
+	}
+	
+	@Test
+	public void testMatchesEXCLUDE() {
+		assertTrue(RegExpMatcher.matches("deacb", "~abc"));		//Bug 15 Found (medium)
+	}
+	
+	@Test
+	public void testMatchesCLASS() {
+		assertTrue(RegExpMatcher.matches("bcaaAaa", "[a-zA-Z]"));		//Bug 3 Found (easy)
+	}
+	
+	@Test
+	public void testMatches1() {
+		assertTrue(RegExpMatcher.matches("def", "()ef"));		//Bug 13 Found (hard)
+	}
+	
+	@Test
+	public void testMatches2() {
+		assertTrue(RegExpMatcher.matches("abc", "((a))"));		//Bug 12 Found (hard)
+	}
+	
+	@Test
+	public void testMatches3() {
+		assertTrue(RegExpMatcher.matches("abcabc", "(abc)\\1"));		//Bug 4 Found (easy)
+	}
+	
+	@Test
+	public void testMatches4() {
+		assertTrue(RegExpMatcher.matches("aaaa", "a{i}"));		//Bug 7 Found (medium)
+	}
+	
+	@Test
+	public void testMatches5() {
+		assertTrue(RegExpMatcher.matches("a", "a{i,}"));		//Bug 7 Found (medium)
+	}
+	
+	@Test
+	public void testMatches6() {
+		assertTrue(RegExpMatcher.matches("2", "<-1>"));		//Bug 9 Found (medium)
+	}
+	
+	@Test
+	public void testMatches7() {
+		assertTrue(RegExpMatcher.matches("a", "[a--b]"));		//Bug 5 Found (hard)
+	}
+	
+	@Test
+	public void testMatches8() {
+		assertTrue(RegExpMatcher.matches("a", "a**"));		//Bug 8 Found (medium)
+	}
+	
+	@Test
+	public void testMatches9() {
+		assertTrue(RegExpMatcher.matches("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "a"));		//Bug 6 Found (hard)
+	}
+	
+	@Test
+	public void testMatches10() {
+		assertTrue(RegExpMatcher.matches("a42a", "a*"));		//Bug 10 Found (hard)
+	}
+	
+	@Test
+	public void testMatches11() {
+		assertTrue(RegExpMatcher.matches("abcdss42aasdf", "abc"));		//Bug 10 Found (hard)
+	}
+	
+	@Test
+	public void testMatches12() {
+		assertTrue(RegExpMatcher.matches("zx", "[^a"));		//Bug 14 Found (medium)
+	}
+	
+	/*
+	 * TESTS FROM TASK 3.1
+	 */
 
     @Test
     public void test001() throws Throwable {
