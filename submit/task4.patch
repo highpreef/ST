@@ -4,13 +4,13 @@ Date: Tue, 31 Mar 2020 19:27:44 +0100
 Subject: [PATCH] End-of-line compatability added
 
 ---
- RegExp.java | 9 ++++++++-
+ src/st1920/automaton/RegExp.java | 9 ++++++++-
  1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/RegExp.java b/RegExp.java
+diff --git a/src/st1920/automaton/RegExp.java b/src/st1920/automaton/RegExp.java
 index 1290c85..15f81d4 100644
---- a/RegExp.java
-+++ b/RegExp.java
+--- a/src/st1920/automaton/RegExp.java
++++ b/src/st1920/automaton/RegExp.java
 @@ -457,6 +457,11 @@ public class RegExp {
  		r.kind = Kind.REGEXP_ANYCHAR;
  		return r;

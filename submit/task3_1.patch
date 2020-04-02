@@ -4,17 +4,17 @@ Date: Tue, 31 Mar 2020 18:00:13 +0100
 Subject: [PATCH] task3_1
 
 ---
- REGEXWrapper.java |  9 ++++++
- REString.java     | 78 +++++++++++++++++++++++++++++++++++++++++++++++
+ src/st1920/automaton/REGEXWrapper.java |  9 ++++++
+ src/st1920/automaton/REString.java     | 78 +++++++++++++++++++++++++++++++++++++++++++++++
  2 files changed, 87 insertions(+)
- create mode 100644 REGEXWrapper.java
- create mode 100644 REString.java
+ create mode 100644 src/st1920/automaton/REGEXWrapper.java
+ create mode 100644 src/st1920/automaton/REString.java
 
-diff --git a/REGEXWrapper.java b/REGEXWrapper.java
+diff --git a/src/st1920/automaton/REGEXWrapper.java b/src/st1920/automaton/REGEXWrapper.java
 new file mode 100644
 index 0000000..6550c24
 --- /dev/null
-+++ b/REGEXWrapper.java
++++ b/src/st1920/automaton/REGEXWrapper.java
 @@ -0,0 +1,9 @@
 +package st1920.automaton;
 +
@@ -26,11 +26,11 @@ index 0000000..6550c24
 +	
 +}
 \ No newline at end of file
-diff --git a/REString.java b/REString.java
+diff --git a/src/st1920/automaton/REString.java b/src/st1920/automaton/REString.java
 new file mode 100644
 index 0000000..8862845
 --- /dev/null
-+++ b/REString.java
++++ b/src/st1920/automaton/REString.java
 @@ -0,0 +1,78 @@
 +package st1920.automaton;
 +
